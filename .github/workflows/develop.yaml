@@ -32,6 +32,5 @@ jobs:
                   patch-wording: "patch,fixes"
                   rc-wording: "RELEASE,alpha,beta"
                   bump-policy: "last-commit"
-                  push: false
             - name: Print tag
               run: echo "${{ steps.version-bump.outputs.newTag }}"
