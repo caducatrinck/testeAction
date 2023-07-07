@@ -27,7 +27,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.ACTION_PACKAGE_REPO_TOKEN }}
               with:
-                    tag-prefix:  '-rc'
+                  tag-prefix: "-rc"
                   minor-wording: "add,Adds,new,minor"
                   major-wording: "MAJOR,cut-major,major"
                   patch-wording: "patch,fixes"
