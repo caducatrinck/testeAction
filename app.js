@@ -2,5 +2,7 @@
 
 function teste() {
     // oi
-    function t() {}
+    function t() {
+        //  popo[ḱpo[kpoḱpoḱpoḱ ]]
+    }
 }
