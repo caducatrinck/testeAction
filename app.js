@@ -1,1 +1,3 @@
-// testej
+// teste
+
+function teste() {}
