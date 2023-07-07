@@ -31,7 +31,7 @@ jobs:
                   major-wording: "MAJOR,cut-major,major"
                   patch-wording: "patch,fixes"
                   rc-wording: "RELEASE,alpha,beta"
-                  target-branch: "develop"
+                  target-branch: "package"
                   bump-policy: "last-commit"
             - name: Print tag
               run: echo "${{ steps.version-bump.outputs.newTag }}"
