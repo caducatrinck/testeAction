@@ -31,7 +31,6 @@ jobs:
                   major-wording: "MAJOR,cut-major,major"
                   patch-wording: "patch,fixes"
                   rc-wording: "RELEASE,alpha,beta"
-                  target-branch: "develop"
                   bump-policy: "last-commit"
                   push: false
             - name: Print tag
