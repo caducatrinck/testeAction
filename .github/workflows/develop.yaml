@@ -1,0 +1,44 @@
+name: DockerImage/tag
+
+on:
+    pull_request:
+        branches: [develop]
+        types: [closed]
+
+jobs:
+    docker:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.ref }}
+                  token: ${{ secrets.ACTION_PACKAGE_REPO_TOKEN }}
+
+            - run: git fetch origin develop
+
+            - name: Automated Version Bump
+              id: version-bump
+              uses: "phips28/gh-action-bump-version@master"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.ACTION_PACKAGE_REPO_TOKEN }}
+              with:
+                  minor-wording: "add,Adds,new,minor"
+                  major-wording: "MAJOR,cut-major,major"
+                  patch-wording: "patch,fixes"
+                  rc-wording: "RELEASE,alpha,beta"
+                  target-branch: "develop"
+                  bump-policy: "last-commit"
+
+            - name: Build and push
+              uses: docker/build-push-action@v2
+              with:
+                  context: .
+                  push: true
+                  tags: ${{ steps.version-bump.outputs.newTag }}
+            - name: Print tag
+              run: echo "${{ steps.version-bump.outputs.newTag }}"
