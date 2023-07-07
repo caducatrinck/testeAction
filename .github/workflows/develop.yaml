@@ -33,12 +33,5 @@ jobs:
                   rc-wording: "RELEASE,alpha,beta"
                   target-branch: "develop"
                   bump-policy: "last-commit"
-
-            - name: Build and push
-              uses: docker/build-push-action@v2
-              with:
-                  context: .
-                  push: true
-                  tags: ${{ steps.version-bump.outputs.newTag }}
             - name: Print tag
               run: echo "${{ steps.version-bump.outputs.newTag }}"
